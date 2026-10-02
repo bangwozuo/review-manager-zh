@@ -1,0 +1,60 @@
+{
+  "skill_id": "de_ecom_03_sk04",
+  "name": "平台规则问答",
+  "type": "atomic",
+  "input": {
+    "type": "object",
+    "required": ["queries"],
+    "properties": {
+      "queries": {
+        "type": "array",
+        "description": "规则问题列表（也可传单个字符串）",
+        "items": {"type": "string"},
+        "examples": ["买家给了恶意差评还能申诉吗？要准备什么证据？", "好评返现违规吗？"]
+      }
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["summary", "qa"],
+    "properties": {
+      "summary": {
+        "type": "object",
+        "properties": {
+          "问题数": {"type": "integer"},
+          "成功召回数": {"type": "integer", "description": "召回阈值 3 分"},
+          "知识缺口数": {"type": "integer"},
+          "规则库条款数": {"type": "integer"}
+        }
+      },
+      "qa": {
+        "type": "array",
+        "description": "逐问题的条款召回与回答要点",
+        "items": {
+          "type": "object",
+          "properties": {
+            "问题": {"type": "string"},
+            "召回条款": {"type": "string", "description": "如 R01 恶意差评申诉；未覆盖则标注"},
+            "匹配得分": {"type": "integer"},
+            "回答要点": {"type": "string"},
+            "出处": {"type": "string"}
+          }
+        }
+      },
+      "gaps": {"type": "array", "items": {"type": "string"}, "description": "知识缺口问题，需人工查官方规则中心"}
+    }
+  },
+  "scripts": {
+    "retrieve": "scripts/rules_qa.py",
+    "usage": "python3 scripts/rules_qa.py --input input.json --outdir out"
+  },
+  "artifacts": ["out/规则检索结果.xlsx", "out/rules_qa.json"],
+  "constraints": {
+    "recall_threshold": 3,
+    "top_k": 3,
+    "builtin_rules": 8,
+    "forbidden": ["编造条款编号", "承诺申诉结果", "规避处罚方法", "利诱改评"],
+    "ai_label_required": true,
+    "human_review_required": true
+  }
+}

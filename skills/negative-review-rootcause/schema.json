@@ -1,0 +1,83 @@
+{
+  "skill_id": "de_ecom_03_sk02",
+  "name": "差评根因分类",
+  "type": "atomic",
+  "input": {
+    "type": "object",
+    "required": ["shop", "platform", "negatives"],
+    "properties": {
+      "shop": {"type": "string", "description": "店铺名"},
+      "platform": {"type": "string", "description": "平台"},
+      "period": {"type": "string", "description": "统计周期"},
+      "negatives": {
+        "type": "array",
+        "description": "1-3 星差评与追评差评列表",
+        "items": {
+          "type": "object",
+          "properties": {
+            "star": {"type": "integer", "description": "星级 1-3", "minimum": 1, "maximum": 3},
+            "text": {"type": "string", "description": "差评原文"},
+            "has_image": {"type": "boolean", "description": "是否带图（图证）"},
+            "is_followup": {"type": "boolean", "description": "是否追评（权重×2）"}
+          }
+        },
+        "maxItems": 1000
+      }
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["summary", "distribution", "detail"],
+    "properties": {
+      "summary": {
+        "type": "object",
+        "properties": {
+          "差评总数": {"type": "integer"},
+          "加权总数": {"type": "integer"},
+          "首要根因": {"type": "string"},
+          "首要根因占比": {"type": "string"},
+          "质量安全占比": {"type": "string", "description": ">10% 触发当日处理"},
+          "治理判定": {"type": "string"}
+        }
+      },
+      "distribution": {
+        "type": "array",
+        "description": "六类根因加权分布与治理动作",
+        "items": {
+          "type": "object",
+          "properties": {
+            "根因": {"type": "string", "enum": ["质量问题(安全)", "质量问题(工艺)", "物流问题", "服务问题", "描述不符", "性价比", "期望差(主观)"]},
+            "加权条数": {"type": "integer"},
+            "占比": {"type": "string"},
+            "治理动作": {"type": "string"}
+          }
+        }
+      },
+      "detail": {
+        "type": "array",
+        "description": "逐条归因明细",
+        "items": {
+          "type": "object",
+          "properties": {
+            "根因(主)": {"type": "string"},
+            "根因(次)": {"type": "string"},
+            "权重": {"type": "string"},
+            "图证": {"type": "string"}
+          }
+        }
+      }
+    }
+  },
+  "scripts": {
+    "attribute": "scripts/rootcause.py",
+    "usage": "python3 scripts/rootcause.py --input input.json --outdir out"
+  },
+  "artifacts": ["out/差评根因分类.xlsx", "out/根因分布.png", "out/rootcause.json"],
+  "constraints": {
+    "max_negatives": 1000,
+    "thresholds": {"top_cause_special": 0.40, "safety_alarm": 0.10, "followup_weight": 2, "min_sample_for_ratio": 10},
+    "forbidden": ["私下删评", "诱导改评", "无数字目标的空建议"],
+    "ai_label_required": true,
+    "human_review_required": true
+  }
+}

@@ -1,0 +1,50 @@
+name: 评价运营官
+repo: bangwozuo/review-manager-zh
+legacy_name: 评价运营专员·小评
+version: 0.2.0
+asset_type: prompt-only
+stage: P0
+complexity: S-M（门槛全图谱最低之一）
+group: 电商小卖家
+runtime_dependencies: none
+api_key_required: false
+demand_ids:
+  - D01
+  - D08
+  - D28
+  - D29
+
+workflows:
+  - name: 评价流实时监控与分级
+    id: de_ecom_03_wf01
+  - name: 差评根因归因
+    id: de_ecom_03_wf02
+  - name: 安抚回复与补偿方案生成
+    id: de_ecom_03_wf03
+  - name: 纠纷证据包整理
+    id: de_ecom_03_wf04
+  - name: 周报复盘
+    id: de_ecom_03_wf05
+
+skills:
+  - id: review-sentiment-analyze
+    name: 评价情感分析
+    family: 
+  - id: negative-review-rootcause
+    name: 差评根因分类
+    family: 
+  - id: appease-script-generate
+    name: 安抚话术生成
+    family: 
+  - id: platform-rules-qa
+    name: 平台规则问答
+    family: 
+  - id: review-report-generate
+    name: 复盘报告生成
+    family: 
+
+compliance:
+  ai_label_required: true
+  human_review_required: true
+  forbidden_words_check: true
+  official_api_only: true

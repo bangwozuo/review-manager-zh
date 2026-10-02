@@ -1,0 +1,55 @@
+{
+  "skill_id": "de_ecom_03_sk05",
+  "name": "复盘报告生成",
+  "type": "atomic",
+  "input": {
+    "type": "object",
+    "required": ["shop", "platform", "this_week"],
+    "properties": {
+      "shop": {"type": "string", "description": "店铺名"},
+      "platform": {"type": "string", "description": "平台"},
+      "period": {"type": "string", "description": "周期，如 2026-09-22 ~ 2026-09-28"},
+      "this_week": {
+        "type": "object",
+        "description": "本周指标",
+        "properties": {
+          "avg_score": {"type": "number", "description": "店铺评分，达标线 4.7"},
+          "total_reviews": {"type": "integer", "description": "评价总数"},
+          "good_rate": {"type": "number", "description": "好评率，下限 0.95"},
+          "bad_rate": {"type": "number", "description": "差评率，上限 0.03"},
+          "reply_rate": {"type": "number", "description": "回复率，目标 1.0"},
+          "reply_hours_bad": {"type": "number", "description": "差评平均响应小时数，目标 ≤2"},
+          "reply_hours_norm": {"type": "number", "description": "一般评价响应小时数，目标 ≤24"}
+        }
+      },
+      "last_week": {"type": "object", "description": "上周指标，同 this_week 结构；缺失则不对比"},
+      "score_trend": {"type": "array", "items": {"type": "number"}, "description": "近 7 天评分序列"},
+      "root_causes": {
+        "type": "array",
+        "description": "根因分布，来自差评根因分类",
+        "items": {"type": "object", "properties": {"cause": {"type": "string"}, "count": {"type": "integer"}}}
+      }
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["summary", "metrics", "improves"],
+    "properties": {
+      "summary": {"type": "object", "description": "评分判定 / 首要根因 / 基准表"},
+      "metrics": {"type": "array", "description": "指标对照（达标/未达标）"},
+      "improves": {"type": "array", "description": "下周改进 3 项（根因/占比/动作与数字目标/责任人/时点）"}
+    }
+  },
+  "scripts": {
+    "report": "scripts/report_gen.py",
+    "usage": "python3 scripts/report_gen.py --input input.json --outdir out"
+  },
+  "artifacts": ["out/评价周报.docx", "out/评价周报数据.xlsx", "out/评分走势.png", "out/report.json"],
+  "constraints": {
+    "baselines": {"score": 4.7, "good_rate": 0.95, "bad_rate": 0.03, "reply_rate": 1.0, "reply_hours_bad": 2, "reply_hours_norm": 24},
+    "noise_band": 0.02,
+    "forbidden": ["无数字目标的改进项", "估算值填充缺失数据", "未脱敏评价引用"],
+    "ai_label_required": true,
+    "human_review_required": true
+  }
+}

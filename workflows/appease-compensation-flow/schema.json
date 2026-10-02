@@ -1,0 +1,75 @@
+{
+  "workflow_id": "de_ecom_03_wf03",
+  "name": "安抚回复与补偿方案生成",
+  "type": "composite",
+  "skill_refs": ["de_ecom_03_sk03", "de_ecom_03_sk04"],
+  "input": {
+    "type": "object",
+    "required": ["shop", "platform", "policy", "negatives"],
+    "properties": {
+      "shop": {"type": "string", "description": "店铺名"},
+      "platform": {"type": "string", "description": "平台"},
+      "policy": {"type": "string", "description": "补偿授权口径，如「补发整件；券 ≤15 元；部分退款 ≤50%」"},
+      "unit_price": {"type": "number", "description": "客单价，用于 30%/60% 成本上限计算"},
+      "negatives": {
+        "type": "array",
+        "description": "差评清单",
+        "items": {
+          "type": "object",
+          "properties": {
+            "star": {"type": "integer", "minimum": 1, "maximum": 5},
+            "text": {"type": "string"},
+            "has_image": {"type": "boolean"},
+            "is_followup": {"type": "boolean"},
+            "order_id": {"type": "string", "description": "关联订单，缺失先补再补偿"}
+          }
+        },
+        "maxItems": 200
+      }
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["summary", "plans"],
+    "properties": {
+      "summary": {
+        "type": "object",
+        "properties": {
+          "差评数": {"type": "integer"},
+          "分级分布": {"type": "object", "description": "L1-L5 计数"},
+          "人工确认件数": {"type": "integer", "description": "超授权/L4/L5 案件"},
+          "授权口径": {"type": "string"}
+        }
+      },
+      "plans": {
+        "type": "array",
+        "description": "分级方案",
+        "items": {
+          "type": "object",
+          "properties": {
+            "情形分级": {"type": "string", "enum": ["L1", "L2", "L3", "L4", "L5"]},
+            "根因": {"type": "string"},
+            "补偿方案": {"type": "string", "description": "须在 policy 授权内，否则标⚠️"},
+            "成本上限": {"type": "string", "description": "L2≤30%客单价 L3≤60%"},
+            "回复话术（字数）": {"type": "string", "description": "30-80 字四件套"},
+            "状态": {"type": "string", "enum": ["直接执行", "需人工确认（超授权）"]}
+          }
+        }
+      },
+      "confirm": {"type": "array", "description": "人工确认清单"}
+    }
+  },
+  "scripts": {
+    "run_flow": "scripts/run_flow.py",
+    "usage": "python3 scripts/run_flow.py --input input.json --outdir out"
+  },
+  "artifacts": ["out/安抚补偿方案.xlsx", "out/安抚补偿方案.docx", "out/appease_flow.json"],
+  "constraints": {
+    "tiers": {"L1": "0元", "L2": "≤30%客单价", "L3": "≤60%客单价", "L4": "全退+补发+电话", "L5": "转人工2h"},
+    "reply_length": {"min": 30, "max": 80},
+    "repeat_claim_window_days": 30,
+    "forbidden": ["授权外补偿执行", "未核实的履约表述", "利诱换改评", "公开缠辩"],
+    "ai_label_required": true,
+    "human_review_required": true
+  }
+}

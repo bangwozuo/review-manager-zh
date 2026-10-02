@@ -1,0 +1,28 @@
+{
+  "shop": "轻羽羽绒服饰店",
+  "platform": "淘宝",
+  "period": "2026-09-22 ~ 2026-09-28",
+  "event_note": "9-20 更换薄绒供应商",
+  "negatives": [
+    {"star": 1, "text": "绒子刺鼻异味，晾了三天还在，怀疑不是新绒", "has_image": false, "is_followup": false},
+    {"star": 2, "text": "拉链卡顿，袖口开线，做工不如去年", "has_image": true, "is_followup": false},
+    {"star": 2, "text": "发货慢，等了7天，客服只会说抱歉", "has_image": false, "is_followup": false},
+    {"star": 3, "text": "实物颜色和详情页差太多，明显色差", "has_image": true, "is_followup": false},
+    {"star": 1, "text": "穿一周就跑绒，里面全是毛", "has_image": false, "is_followup": true},
+    {"star": 2, "text": "尺码偏大两码，与描述的尺码表对不上", "has_image": false, "is_followup": false},
+    {"star": 3, "text": "物流慢，半个月才到偏远的地区", "has_image": false, "is_followup": true},
+    {"star": 2, "text": "太贵了，这个填充量不值", "has_image": false, "is_followup": false},
+    {"star": 1, "text": "异味大得头疼，孩子穿着直挠脖子", "has_image": true, "is_followup": false},
+    {"star": 2, "text": "客服推诿不退运费", "has_image": false, "is_followup": false},
+    {"star": 3, "text": "版型一般，不如图片好看", "has_image": false, "is_followup": false},
+    {"star": 2, "text": "开线+扣子掉了，做工太差", "has_image": false, "is_followup": true}
+  ],
+  "last_week_dist": {
+    "质量问题(工艺)": 0.18,
+    "物流问题": 0.22,
+    "服务问题": 0.15,
+    "描述不符": 0.20,
+    "性价比": 0.10,
+    "期望差(主观)": 0.15
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "skill_id": "de_ecom_03_sk01",
+  "name": "评价情感分析",
+  "type": "atomic",
+  "input": {
+    "type": "object",
+    "required": ["shop", "platform", "reviews"],
+    "properties": {
+      "shop": {"type": "string", "description": "店铺名"},
+      "platform": {"type": "string", "description": "平台", "enum": ["天猫", "淘宝", "京东", "拼多多", "抖音", "其他"]},
+      "period": {"type": "string", "description": "统计周期，如 2026-09-22 ~ 2026-09-28"},
+      "reviews": {
+        "type": "array",
+        "description": "评价列表，来自平台评价导出",
+        "items": {
+          "type": "object",
+          "properties": {
+            "star": {"type": "integer", "description": "星级 1-5", "minimum": 1, "maximum": 5},
+            "text": {"type": "string", "description": "评价原文"},
+            "has_image": {"type": "boolean", "description": "是否带图"},
+            "is_followup": {"type": "boolean", "description": "是否追评（追评权重×2）"}
+          }
+        },
+        "maxItems": 2000
+      }
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["summary", "detail", "tag_freq"],
+    "properties": {
+      "summary": {
+        "type": "object",
+        "properties": {
+          "店铺": {"type": "string"},
+          "统计周期": {"type": "string"},
+          "评价总数": {"type": "integer"},
+          "情感分布": {"type": "object", "description": "强负/负面/中/正面/强正 计数"},
+          "好评率": {"type": "string", "description": "4-5 星占比，基准 ≥95%"},
+          "差评率": {"type": "string", "description": "1-2 星占比，>3% 须专项治理"},
+          "健康度判定": {"type": "string"}
+        }
+      },
+      "detail": {
+        "type": "array",
+        "description": "分级明细，含处置优先级与响应时限",
+        "items": {
+          "type": "object",
+          "properties": {
+            "情感分级": {"type": "string", "enum": ["强负", "负面", "中", "正面", "强正"]},
+            "处置优先级": {"type": "string", "enum": ["P0", "P1", "P2", "—"]},
+            "响应时限": {"type": "string", "description": "P0=2小时 P1=12小时 P2=24小时"},
+            "四维标签": {"type": "string", "description": "口味质量/服务/物流/性价比"}
+          }
+        }
+      },
+      "tag_freq": {"type": "object", "description": "负面标签加权词频（追评×2），Top 负面标签 = 下周改进项"}
+    }
+  },
+  "scripts": {
+    "analyze": "scripts/sentiment_analyze.py",
+    "usage": "python3 scripts/sentiment_analyze.py --input input.json --outdir out"
+  },
+  "artifacts": ["out/评价情感分析.xlsx", "out/情感分布.png", "out/负面标签Top.png", "out/sentiment.json"],
+  "constraints": {
+    "max_reviews": 2000,
+    "baseline": {"good_rate_floor": 0.95, "bad_rate_ceil": 0.03, "sla_hours": {"P0": 2, "P1": 12, "P2": 24}, "followup_weight": 2},
+    "forbidden": ["诱导改评", "好评返现", "删差评", "屏蔽差评"],
+    "ai_label_required": true,
+    "human_review_required": true
+  }
+}

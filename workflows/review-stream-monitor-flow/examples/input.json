@@ -1,0 +1,15 @@
+{
+  "shop": "晨光母婴旗舰店",
+  "platform": "天猫",
+  "monitor_date": "2026-09-29",
+  "reviews": [
+    {"star": 1, "text": "奶瓶到手就裂了，还划到手，这种质量问题必须曝光", "has_image": true, "is_followup": false, "order_id": "TB20260929001"},
+    {"star": 2, "text": "奶粉勺子没放，找客服三天没人理", "has_image": false, "is_followup": false, "order_id": "TB20260929002"},
+    {"star": 1, "text": "宝宝用了红屁股，你们说食品级硅胶是骗人的吧", "has_image": true, "is_followup": true, "order_id": "TB20260928015"},
+    {"star": 3, "text": "奶嘴流速太快，宝宝呛了好几次", "has_image": false, "is_followup": false, "order_id": "TB20260929003"},
+    {"star": 2, "text": "发货太慢，等了5天，双11都比你快", "has_image": false, "is_followup": false, "order_id": "TB20260929004"},
+    {"star": 4, "text": "质量不错，物流略慢", "has_image": false, "is_followup": false, "order_id": "TB20260929005"},
+    {"star": 5, "text": "第二瓶回购，防胀气设计真的好用，客服还教了排气手法", "has_image": true, "is_followup": false, "order_id": "TB20260929006"},
+    {"star": 3, "text": "包装一般，盒子有点瘪", "has_image": false, "is_followup": true, "order_id": "TB20260927008"}
+  ]
+}

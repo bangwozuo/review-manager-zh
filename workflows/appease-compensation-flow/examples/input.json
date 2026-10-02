@@ -1,0 +1,14 @@
+{
+  "shop": "雾岭茶业旗舰店",
+  "platform": "天猫",
+  "policy": "可补发整件；无门槛券单张 ≤ 15 元；质量问题部分退款 ≤ 50%；无全额退款授权",
+  "unit_price": 88,
+  "negatives": [
+    {"star": 3, "text": "口感偏淡，不如上次买的批次", "has_image": false, "is_followup": false, "order_id": "TB260929011"},
+    {"star": 2, "text": "物流太慢，等了6天才到，茶叶都有点受潮", "has_image": false, "is_followup": false, "order_id": "TB260929012"},
+    {"star": 1, "text": "茶叶里有异物，喝着不放心，要求全额退款", "has_image": true, "is_followup": false, "order_id": "TB260929013"},
+    {"star": 2, "text": "罐子瘪了，包装太差", "has_image": true, "is_followup": false, "order_id": "TB260929014"},
+    {"star": 2, "text": "客服已读不回，退货申请三天没人处理", "has_image": false, "is_followup": true, "order_id": "TB260928020"},
+    {"star": 3, "text": "和详情页图片色差大，看着像陈茶", "has_image": false, "is_followup": false, "order_id": "TB260929015"}
+  ]
+}

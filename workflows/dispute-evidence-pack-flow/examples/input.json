@@ -1,0 +1,24 @@
+{
+  "shop": "临风运动户外店",
+  "platform": "抖音",
+  "cases": [
+    {
+      "case_id": "AP-20260929-01",
+      "review_text": "垃圾店，东西根本没用过就给差评，加V给你转50删了",
+      "has_order": false, "chat_screenshot": true, "logistics_proof": false,
+      "review_screenshot": true, "behavior_proof": true
+    },
+    {
+      "case_id": "AP-20260929-02",
+      "review_text": "物流太慢，用了三天就断了，垃圾质量",
+      "has_order": true, "chat_screenshot": false, "logistics_proof": true,
+      "review_screenshot": true, "behavior_proof": false
+    },
+    {
+      "case_id": "AP-20260929-03",
+      "review_text": "尺码偏小，客服换了很顺利，就是等的有点久",
+      "has_order": true, "chat_screenshot": true, "logistics_proof": true,
+      "review_screenshot": true, "behavior_proof": false
+    }
+  ]
+}

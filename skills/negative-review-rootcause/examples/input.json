@@ -1,0 +1,19 @@
+{
+  "shop": "果真甜生鲜旗舰店",
+  "platform": "拼多多",
+  "period": "2026-09-22 ~ 2026-09-28",
+  "negatives": [
+    {"star": 1, "text": "芒果烂了三个，箱子里一股酒味，都变质了", "has_image": true, "is_followup": false},
+    {"star": 1, "text": "吃了一个晚上拉肚子，里面有异物，必须投诉", "has_image": true, "is_followup": false},
+    {"star": 2, "text": "暴力分拣压坏一半，包装太差", "has_image": true, "is_followup": false},
+    {"star": 2, "text": "发货慢，等了5天还没到，催了两次", "has_image": false, "is_followup": false},
+    {"star": 2, "text": "漏发一箱，客服已读不回，售后太差", "has_image": false, "is_followup": false},
+    {"star": 3, "text": "实物和图片色差大，详情页说 5 斤实际分量不足", "has_image": false, "is_followup": false},
+    {"star": 2, "text": "太贵了，这个价不如楼下超市", "has_image": false, "is_followup": false},
+    {"star": 1, "text": "烂果率太高，第二箱还是坏的", "has_image": false, "is_followup": true},
+    {"star": 3, "text": "物流太慢，到手都不新鲜了", "has_image": false, "is_followup": true},
+    {"star": 2, "text": "客服推诿不处理烂果赔付", "has_image": false, "is_followup": false},
+    {"star": 3, "text": "个头比描述小一圈", "has_image": false, "is_followup": false},
+    {"star": 2, "text": "破损，垫纸就两层", "has_image": true, "is_followup": false}
+  ]
+}

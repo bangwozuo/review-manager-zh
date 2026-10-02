@@ -1,0 +1,38 @@
+{
+  "shop": "山禾炊具旗舰店",
+  "platform": "京东",
+  "period": "2026-09-22 ~ 2026-09-28",
+  "metrics": {
+    "avg_score": 4.66,
+    "good_rate": 0.944,
+    "bad_rate": 0.041,
+    "total_reviews": 312,
+    "reply_rate": 0.96,
+    "reply_hours_bad": 3.0,
+    "reply_hours_norm": 19.0
+  },
+  "last_metrics": {
+    "avg_score": 4.72,
+    "good_rate": 0.955,
+    "bad_rate": 0.033,
+    "total_reviews": 289,
+    "reply_rate": 0.98,
+    "reply_hours_bad": 2.4,
+    "reply_hours_norm": 17.0
+  },
+  "score_trend": [4.73, 4.72, 4.70, 4.66, 4.62, 4.60, 4.66],
+  "reviews": [
+    {"star": 1, "text": "锅底涂层起皮，用两周就掉渣，质量差", "has_image": true, "is_followup": false},
+    {"star": 2, "text": "发货慢，等了6天，双11都没这么慢", "has_image": false, "is_followup": false},
+    {"star": 2, "text": "锅把手松动，螺丝还少一颗", "has_image": true, "is_followup": false},
+    {"star": 3, "text": "锅比较重，女生端不动，详情页没写重量", "has_image": false, "is_followup": false},
+    {"star": 3, "text": "导热一般，比描述的受热均匀差远了", "has_image": false, "is_followup": false},
+    {"star": 1, "text": "锅盖碎了，客服已读不回三天", "has_image": true, "is_followup": false},
+    {"star": 3, "text": "太重了不值这个价", "has_image": false, "is_followup": true},
+    {"star": 4, "text": "不粘效果不错，就是锅底有点厚", "has_image": false, "is_followup": false},
+    {"star": 5, "text": "第二次回购，受热均匀油烟小，客服还送了木铲", "has_image": true, "is_followup": false},
+    {"star": 5, "text": "做工精细，锅盖带沥水设计很实用", "has_image": false, "is_followup": false},
+    {"star": 2, "text": "涂层有划痕，像是展示样品", "has_image": true, "is_followup": true},
+    {"star": 4, "text": "整体满意，物流略慢", "has_image": false, "is_followup": false}
+  ]
+}

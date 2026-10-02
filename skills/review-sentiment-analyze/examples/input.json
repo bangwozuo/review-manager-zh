@@ -1,0 +1,27 @@
+{
+  "shop": "川味鲜食品旗舰店",
+  "platform": "天猫",
+  "period": "2026-09-22 ~ 2026-09-28",
+  "reviews": [
+    {"star": 1, "text": "吃到变质发霉的，客服已读不回，再不处理就打12315投诉", "has_image": true, "is_followup": false},
+    {"star": 2, "text": "包装压坏了半盒，物流太慢等了6天，客服态度还敷衍", "has_image": true, "is_followup": false},
+    {"star": 1, "text": "难吃，口感差，感觉是假货，要求退货退款", "has_image": false, "is_followup": false},
+    {"star": 3, "text": "味道一般，分量比上次少，这个价格不太值", "has_image": false, "is_followup": false},
+    {"star": 2, "text": "漏发了两包，找客服三天才补发，太慢了", "has_image": false, "is_followup": false},
+    {"star": 3, "text": "物流慢，等了一个星期才到", "has_image": false, "is_followup": true},
+    {"star": 1, "text": "第二次买了还是碎的，做工越来越差", "has_image": false, "is_followup": true},
+    {"star": 4, "text": "味道不错，发货也挺快，就是外包装有点压痕", "has_image": false, "is_followup": false},
+    {"star": 5, "text": "麻辣味很正，越嚼越香，包装严实没漏，回购第三次了", "has_image": true, "is_followup": false},
+    {"star": 5, "text": "新鲜好吃，客服很耐心地推荐了口味，物流次日达", "has_image": false, "is_followup": false},
+    {"star": 5, "text": "性价比高，分量足，活动价入手太划算了", "has_image": false, "is_followup": false},
+    {"star": 4, "text": "口感还行，包装完好，就是有点小贵", "has_image": false, "is_followup": false},
+    {"star": 5, "text": "好吃", "has_image": false, "is_followup": false},
+    {"star": 4, "text": "质量可以，物流稍慢等了4天", "has_image": false, "is_followup": false},
+    {"star": 2, "text": "客服推诿不给退款，售后太差", "has_image": false, "is_followup": true},
+    {"star": 5, "text": "回购N次的老店，品质一直在线，发货快", "has_image": true, "is_followup": false},
+    {"star": 3, "text": "一般", "has_image": false, "is_followup": false},
+    {"star": 5, "text": "味道正，包装好，送人也体面", "has_image": false, "is_followup": false},
+    {"star": 1, "text": "过敏了，肚子不舒服，安全问题必须曝光", "has_image": false, "is_followup": false},
+    {"star": 4, "text": "味道好，物流快", "has_image": false, "is_followup": false}
+  ]
+}

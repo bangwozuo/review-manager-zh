@@ -1,0 +1,62 @@
+{
+  "skill_id": "de_ecom_03_sk03",
+  "name": "安抚话术生成",
+  "type": "atomic",
+  "input": {
+    "type": "object",
+    "required": ["reviews", "policy"],
+    "properties": {
+      "reviews": {
+        "type": "array",
+        "description": "差评原文列表",
+        "items": {
+          "type": "object",
+          "properties": {
+            "star": {"type": "integer", "description": "星级 1-5", "minimum": 1, "maximum": 5},
+            "text": {"type": "string", "description": "评价原文"},
+            "has_image": {"type": "boolean", "description": "是否带图"},
+            "is_followup": {"type": "boolean", "description": "是否追评"}
+          }
+        },
+        "maxItems": 200
+      },
+      "root_cause": {"type": "string", "description": "已判定根因标签；缺省由模型按原文判断并给依据"},
+      "policy": {"type": "string", "description": "补偿授权边界，如「补发+无门槛券 ≤10 元」；无授权则只给文案"}
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["replies", "root_judgment"],
+    "properties": {
+      "replies": {
+        "type": "array",
+        "description": "回复文案表，每条 30-80 字",
+        "items": {
+          "type": "object",
+          "properties": {
+            "评价要点": {"type": "string"},
+            "情形分级": {"type": "string", "enum": ["L1", "L2", "L3", "L4", "L5"]},
+            "回复文案": {"type": "string", "description": "四件套：认领+原因+方案+通道"},
+            "处置动作": {"type": "string", "description": "须在 policy 授权内"}
+          }
+        }
+      },
+      "root_judgment": {"type": "array", "description": "根因判断（依据引原文）"},
+      "remedies": {"type": "array", "description": "补救建议，注明授权内/需人工确认"},
+      "pending": {"type": "array", "description": "存疑项：根因不清/疑似恶意/授权外请求"}
+    }
+  },
+  "constraints": {
+    "reply_length": {"min": 30, "max": 80},
+    "tiers": {
+      "L1": "3星/期望差，0 元",
+      "L2": "物流/描述不符，补发或券 5-10 元，≤客单价 30%",
+      "L3": "工艺质量，补发或退 30%-50%，≤客单价 60%",
+      "L4": "质量安全，全额退款+补发+电话+留证",
+      "L5": "涉诉风险词，停用模板转人工 2 小时介入"
+    },
+    "forbidden": ["诱导改评", "模板腔", "授权外补偿", "编造已履约事实", "公开缠辩"],
+    "ai_label_required": true,
+    "human_review_required": true
+  }
+}

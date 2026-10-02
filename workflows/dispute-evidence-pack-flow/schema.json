@@ -1,0 +1,78 @@
+{
+  "workflow_id": "de_ecom_03_wf04",
+  "name": "纠纷证据包整理",
+  "type": "composite",
+  "skill_refs": ["de_ecom_03_sk04", "de_ecom_03_sk03"],
+  "input": {
+    "type": "object",
+    "required": ["shop", "platform", "cases"],
+    "properties": {
+      "shop": {"type": "string", "description": "店铺名"},
+      "platform": {"type": "string", "description": "平台"},
+      "cases": {
+        "type": "array",
+        "description": "疑似恶意差评案件",
+        "items": {
+          "type": "object",
+          "properties": {
+            "case_id": {"type": "string", "description": "案件编号，如 AP-20260929-01"},
+            "review_text": {"type": "string", "description": "评价原文"},
+            "has_order": {"type": "boolean", "description": "订单记录（20分）"},
+            "chat_screenshot": {"type": "boolean", "description": "完整聊天记录含时间戳（30分）"},
+            "logistics_proof": {"type": "boolean", "description": "物流凭证（20分）"},
+            "review_screenshot": {"type": "boolean", "description": "评价原文截图含账号时间（20分）"},
+            "behavior_proof": {"type": "boolean", "description": "买家行为佐证（10分）"}
+          }
+        },
+        "maxItems": 50
+      }
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["summary", "cases"],
+    "properties": {
+      "summary": {
+        "type": "object",
+        "properties": {
+          "案件数": {"type": "integer"},
+          "可提交": {"type": "integer", "description": "完整度 ≥80%"},
+          "补强后提交": {"type": "integer", "description": "60-80%"},
+          "不提交": {"type": "integer", "description": "<60%，严禁提交"},
+          "转安抚流": {"type": "integer", "description": "未检出恶意特征，转 appease-compensation-flow"},
+          "成功率基准": {"type": "string", "description": "行业经验约 40-60%"}
+        }
+      },
+      "cases": {
+        "type": "array",
+        "description": "逐案判定",
+        "items": {
+          "type": "object",
+          "properties": {
+            "案件ID": {"type": "string"},
+            "恶意特征": {"type": "string", "description": "索要返现删评/同行攻击/辱骂/无交易"},
+            "申诉类型": {"type": "string", "enum": ["敲诈勒索型", "同行攻击型", "辱骂型", "无交易型", "误判澄清（差评描述与订单可对上）"]},
+            "证据得分": {"type": "string"},
+            "完整度": {"type": "string"},
+            "判定": {"type": "string", "enum": ["✅ 可提交", "🟡 补强后提交", "⛔ 不提交（证据不全）", "→ 转安抚流（未检出恶意特征，属真实差评）"]},
+            "缺项": {"type": "string"}
+          }
+        }
+      },
+      "letters": {"type": "array", "description": "申诉信四要素框架（事实/证据/诉求/承诺）"}
+    }
+  },
+  "scripts": {
+    "run_flow": "scripts/run_flow.py",
+    "usage": "python3 scripts/run_flow.py --input input.json --outdir out"
+  },
+  "artifacts": ["out/申诉证据包.xlsx", "out/申诉证据包.docx", "out/dispute_flow.json"],
+  "constraints": {
+    "evidence_weights": {"订单记录": 20, "完整聊天记录": 30, "物流凭证": 20, "评价原文截图": 20, "买家行为佐证": 10},
+    "submit_line": 0.80,
+    "reinforce_line": 0.60,
+    "forbidden": ["伪造证据", "<60%提交", "诉求越权", "私下谈判删评"],
+    "ai_label_required": true,
+    "human_review_required": true
+  }
+}
