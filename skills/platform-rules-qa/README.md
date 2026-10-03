@@ -7,6 +7,8 @@
 
 ![真实执行](docs/assets/run-terminal.png)
 
+![演示视频](docs/assets/demo.mp4)
+
 *上图来自真实执行：内置样例 3 个规则问题 → 3 条全部召回（得分 22 / 9 / 7，阈值 3 分），含「花钱删差评不可行」的合规判定，产物落盘 Excel + JSON。*
 
 ---

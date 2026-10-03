@@ -7,6 +7,8 @@
 
 ![真实执行](docs/assets/run-terminal.png)
 
+![演示视频](docs/assets/demo.mp4)
+
 *上图来自真实执行：内置样例（临风运动户外店 3 件案件）→ 1 件敲诈勒索型（60 分）判「补强后提交」，2 件未检出恶意特征转安抚流，产物落盘 Excel + Word + JSON。*
 
 ---

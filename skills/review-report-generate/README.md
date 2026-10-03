@@ -7,6 +7,8 @@
 
 ![真实执行](docs/assets/run-terminal.png)
 
+![演示视频](docs/assets/demo.mp4)
+
 *上图来自真实执行：内置样例（悦己家居旗舰店，本周评分 4.62 vs 上周 4.68）→ 判「低于 4.7 达标线，须专项治理，首要根因物流占 56%」，产物落盘 Word + Excel + PNG + JSON。*
 
 ---
