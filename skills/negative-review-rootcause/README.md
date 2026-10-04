@@ -7,7 +7,7 @@
 
 ![真实执行](docs/assets/run-terminal.png)
 
-![演示视频](docs/assets/demo.mp4)
+🎬 **[▶ 观看演示视频](docs/assets/demo.mp4)** — 四幕数据叙事：业务钩子 → 真实执行 → 指标条形图生长 → 交付物
 
 *上图来自真实执行：内置样例 12 条差评（3 条带图、2 条追评）→ 加权总数 14，质量安全类占 14% 触发「当日下架自查」告警，产物落盘 Excel + PNG + JSON。*
 

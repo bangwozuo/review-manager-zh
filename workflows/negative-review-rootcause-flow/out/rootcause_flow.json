@@ -93,6 +93,6 @@
     }
   ],
   "malicious": [],
-  "generated_at": "2026-10-03 21:13:56",
+  "generated_at": "2026-10-04 10:06:33",
   "note": "机器归因与对比；因果解释由模型按 prompt.txt 复核"
 }

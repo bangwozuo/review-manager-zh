@@ -7,7 +7,7 @@
 
 ![真实执行](docs/assets/run-terminal.png)
 
-![演示视频](docs/assets/demo.mp4)
+🎬 **[▶ 观看演示视频](docs/assets/demo.mp4)** — 四幕检测叙事：业务钩子 → 真实执行 → 检查项逐条亮灯 → 交付物
 
 *上图来自真实执行：内置样例（晨光母婴旗舰店当日 8 条评价）→ P0×2 / P1×3 / P2×1 / 好评×2，触发「P0 未清零」告警，1 件命中涉诉风险词转人工，产物落盘 Excel + Word + JSON。*
 
