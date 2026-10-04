@@ -7,9 +7,9 @@
 [![NoKey](https://img.shields.io/badge/API%20Key-not%20required-success)](#快速开始)
 [![License](https://img.shields.io/badge/license-Apache--2.0-green)](LICENSE)
 
-![演示](docs/assets/hero.gif)
+![演示](https://cdn.jsdelivr.net/gh/bangwozuo/review-manager-zh@main/docs/assets/hero.gif)
 
-*▲ 实时演示（自动循环）· [▶ 观看完整版合集视频](docs/demo.mp4)*
+*▲ 实时演示（自动循环）· [▶ 观看完整版合集视频](https://cdn.jsdelivr.net/gh/bangwozuo/review-manager-zh@main/docs/demo.mp4)*
 
 *上面 20 秒演示来自本仓 5 个代表资产的真实脚本执行截图：评价情感分析 → 差评根因分类 → 复盘报告生成 → 评价流监控 → 周报复盘（各资产完整截图见其 `docs/assets/run-terminal.png`）。*
 

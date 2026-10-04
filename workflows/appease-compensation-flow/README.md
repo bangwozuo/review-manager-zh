@@ -7,7 +7,7 @@
 
 ![真实执行](docs/assets/run-terminal.png)
 
-🎬 **[▶ 观看演示视频](docs/assets/demo.mp4)** — 四幕创作叙事：业务钩子 → 真实执行 → 要点到成稿演变 → 交付物
+🎬 **[▶ 观看演示视频（在线播放）](https://cdn.jsdelivr.net/gh/bangwozuo/review-manager-zh@main/workflows/appease-compensation-flow/docs/assets/demo.mp4) · [GitHub 页](https://github.com/bangwozuo/review-manager-zh/blob/main/workflows/appease-compensation-flow/docs/assets/demo.mp4)** — 四幕创作叙事：业务钩子 → 真实执行 → 要点到成稿演变 → 交付物
 
 *上图来自真实执行：内置样例（雾岭茶业 6 条差评，授权「券 ≤15 元、部分退款 ≤50%、无全额退款授权」，客单价 88 元）→ 分级 L1×2 / L2×1 / L3×2 / L4×1，人工确认 1 件（L4 超授权），产物落盘 Excel + Word + JSON。*
 
