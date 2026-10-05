@@ -7,7 +7,9 @@
 
 ![真实执行](docs/assets/run-terminal.png)
 
-🎬 **[▶ 观看演示视频（在线播放）](https://cdn.jsdelivr.net/gh/bangwozuo/review-manager-zh@main/workflows/negative-review-rootcause-flow/docs/assets/demo.mp4) · [GitHub 页](https://github.com/bangwozuo/review-manager-zh/blob/main/workflows/negative-review-rootcause-flow/docs/assets/demo.mp4)** — 四幕数据叙事：业务钩子 → 真实执行 → 指标条形图生长 → 交付物
+![演示](https://cdn.jsdelivr.net/gh/bangwozuo/review-manager-zh@main/workflows/negative-review-rootcause-flow/docs/assets/demo.gif)
+
+🎬 **[▶ 观看高清完整版（mp4）](https://cdn.jsdelivr.net/gh/bangwozuo/review-manager-zh@main/workflows/negative-review-rootcause-flow/docs/assets/demo.mp4)** — 四幕数据叙事：业务钩子 → 真实执行 → 指标条形图生长 → 交付物
 
 *上图来自真实执行：内置样例（轻羽羽绒服饰店 12 条差评，事件备注「9-20 更换薄绒供应商」）→ 加权总数 15，质量安全类占 13% 触发当日下架自查告警，全部占比变化 ≤ 10pct 判噪声，产物落盘 Excel + PNG + JSON。*
 
